@@ -1,0 +1,22 @@
+{
+  "name": "da",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/display1180/test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/display1180/test/issues"
+  },
+  "homepage": "https://github.com/display1180/test#readme",
+  "dependencies": {
+    "smooth-scrollbar": "^8.8.1"
+  }
+}
