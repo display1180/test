@@ -27,10 +27,13 @@ barba.init({
     }]
 });
 
-const tl = gsap.timeline().from(".sect2 p", {
+const tl = gsap.timeline({
+    immediateRender:false,
+    scrollTrigger: {
+    }
+}).from(".sect2 p", {
     opacity:0,
     scrollTrigger: {
-        markers:true,
         trigger:'.sect2 p',
         scrub:true,
         start: 'top center',
@@ -38,15 +41,67 @@ const tl = gsap.timeline().from(".sect2 p", {
     }
 })
 .to('.sect2 p', {
-    opacity:1,
+    opacity:0,
+    immediateRender: false,
     scrollTrigger: {
-        markers:{
-            startColor:'blue',
-            endColor:'yellow'
-        },
         trigger:'.sect2 p',
         scrub:true,
         start:'top+=400 center',
         end: 'top+=500 center'
     }
 })
+// .from('.sect3 .bubble', {
+//     yPercent: '200',
+//     immediateRender: false,
+//     scrollTrigger: {
+//         trigger:'.sect3',
+//         markers:true,
+//         pin:true,
+//         scrub:true,
+//         start: 'top top',
+//         end: 'center top+=200',
+//         markers: {
+//             startColor: 'red',
+//             endColor: 'orange'
+//         }
+//     }
+// }).fromTo('.sect3 .bubble',{
+//     opacity:1,
+//     scrollTrigger: {
+
+//     }
+// })
+
+var tl2 = gsap.timeline();
+tl2.from('.sect3 .bubble', {
+    y:600,
+    duration:2
+})
+.to('.sect3 p', {
+    opacity:0,
+    duration:0.5
+},"-=0.5")
+
+.to('.sect3 .bubble', {
+    left:900,
+    scale:1.2,
+    duration:2
+})
+.from('.sect3 h3', {
+    opacity:0,
+    left:600,
+    duration:1
+})
+.to('.sect3 .bubble', {
+    opacity:1,
+    duration:2
+} )
+ScrollTrigger.create({
+    trigger: '.sect3',
+    pin:true,
+    start:'top top',
+    end: '+200%',
+    scrub:true,
+    animation:tl2
+})
+
