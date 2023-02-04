@@ -27,50 +27,13 @@ barba.init({
     }]
 });
 
-const tl = gsap.timeline({
-    immediateRender:false,
+gsap.to('.sect1 .bubble', {
     scrollTrigger: {
-    }
-}).from(".sect2 p", {
-    opacity:0,
-    scrollTrigger: {
-        trigger:'.sect2 p',
         scrub:true,
-        start: 'top center',
-        end: 'bottom center'
-    }
+    },
+    y: (i, target) => -ScrollTrigger.maxScroll(window) * target.dataset.speed,
+  ease: "none"
 })
-.to('.sect2 p', {
-    opacity:0,
-    immediateRender: false,
-    scrollTrigger: {
-        trigger:'.sect2 p',
-        scrub:true,
-        start:'top+=400 center',
-        end: 'top+=500 center'
-    }
-})
-// .from('.sect3 .bubble', {
-//     yPercent: '200',
-//     immediateRender: false,
-//     scrollTrigger: {
-//         trigger:'.sect3',
-//         markers:true,
-//         pin:true,
-//         scrub:true,
-//         start: 'top top',
-//         end: 'center top+=200',
-//         markers: {
-//             startColor: 'red',
-//             endColor: 'orange'
-//         }
-//     }
-// }).fromTo('.sect3 .bubble',{
-//     opacity:1,
-//     scrollTrigger: {
-
-//     }
-// })
 
 var tl2 = gsap.timeline();
 tl2.from('.sect3 .bubble', {
@@ -96,6 +59,8 @@ tl2.from('.sect3 .bubble', {
     opacity:1,
     duration:2
 } )
+
+
 ScrollTrigger.create({
     trigger: '.sect3',
     pin:true,
@@ -104,4 +69,94 @@ ScrollTrigger.create({
     scrub:true,
     animation:tl2
 })
+
+
+
+const tl = gsap.timeline({
+    immediateRender:false,
+    scrollTrigger: {
+    }
+}).from(".sect2 p", {
+    opacity:0,
+    scrollTrigger: {
+        trigger:'.sect2 p',
+        scrub:true,
+        start: 'top center',
+        end: 'bottom center',
+    }
+})
+.to('.sect2 p', {
+    opacity:0,
+    immediateRender: false,
+    scrollTrigger: {
+        trigger:'.sect2 p',
+        scrub:true,
+        start:'top+=400 center',
+        end: 'top+=500 center'
+    }
+})
+.to('.sect4', {
+    scrollTrigger: {
+        trigger:'.sect4 .sect-wrap',
+        pin:true,
+    }
+})
+.to('.sect4 p.first', {
+    opacity:0,
+    
+    scrollTrigger: {
+        trigger:'.sect4 p.first',
+        start: 'top top',
+        end : 'bottom center',
+        scrub:1,
+        markers: {
+            startColor:'red',
+            endColor:'orange'
+        }
+    }
+})
+.from('.sect4 p.second', {
+    opacity:0,
+    scrollTrigger: {
+        trigger:'.sect4 p.second',
+        start: 'top top',
+        end : 'bottom center',
+        scrub:1,
+        markers: {
+            startColor:'yellow',
+            endColor:'blue'
+        }
+    }
+})
+.to('body', {
+    backgroundColor: '#3d5649',
+    scrollTrigger: {
+        trigger: '.sect5',
+        start: 'top center',
+        scrub:1,
+        end: 'top top',
+      
+    }
+})
+// .from('.sect3 .bubble', {
+//     yPercent: '200',
+//     immediateRender: false,
+//     scrollTrigger: {
+//         trigger:'.sect3',
+//         markers:true,
+//         pin:true,
+//         scrub:true,
+//         start: 'top top',
+//         end: 'center top+=200',
+//         markers: {
+//             startColor: 'red',
+//             endColor: 'orange'
+//         }
+//     }
+// }).fromTo('.sect3 .bubble',{
+//     opacity:1,
+//     scrollTrigger: {
+
+//     }
+// })
 
